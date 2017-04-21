@@ -1,14 +1,33 @@
 var menuState = function() {
-    playButton = null;
-    backgroundMenu = null;
-    creditButton = null;
-    howtoplayButton = null;
-    tween = null;
-    closeButton = null;
-    musique_background = null;
+
 }
 
 menuState.prototype = {
+
+    preload: function(){
+
+        game.load.image('background_menu', 'assets/background_menu.png');
+        game.load.image('play_button', 'assets/play_button.png');
+        game.load.image('play_button_hover', 'assets/play_button_hover.png');
+        game.load.image('credit_button', 'assets/credit_button.png');
+        game.load.image('credit_button_hover', 'assets/credit_hover_button.png');
+        game.load.image('howtoplay_button', 'assets/howtoplay_button.png');
+        game.load.image('howtoplay_button_hover', 'assets/howtoplay_hover_button.png');
+        game.load.image('crédits', 'assets/crédits.png');
+        game.load.image('howtoplay', 'assets/comment-jouer.png');
+        game.load.image('croix_fermee', 'assets/croix_fermee.png');
+
+        game.load.audio('menu', 'sounds/enjoy.wav');
+
+        playButton = null;
+        backgroundMenu = null;
+        creditButton = null;
+        howtoplayButton = null;
+        tween = null;
+        closeButton = null;
+        musique_background = null;
+    },
+
     create: function(){
         this.game.scale.pageAlignHorizontally = true;this.game.scale.pageAlignVertically = true;this.game.scale.refresh();
         backgroundMenu = game.add.sprite(0,0,'background_menu');
@@ -43,7 +62,7 @@ menuState.prototype = {
     },
     actionOnClick: function() {
         game.sound.stopAll();
-        game.state.start('play');
+        game.state.start('boot', true, true);
     },
     play_button_hover: function(){
        playButton.loadTexture('play_button_hover', 0, false); 

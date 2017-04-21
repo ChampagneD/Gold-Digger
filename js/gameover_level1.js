@@ -11,8 +11,7 @@ level1LoseState.prototype = {
     },
     update: function(){
         if(relancer.isDown){
-            level1State();
-            game.state.start('level1');
+            game.state.start('boot');
         }
     }
 }

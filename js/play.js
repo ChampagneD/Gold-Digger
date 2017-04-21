@@ -1,68 +1,5 @@
 var playState = function() {
-    joueur = null;
-    Boisson = null;
-    Danse_un = null;
-    Danse_un_vert = null;
-    Danse_trois_vert = null;
-    Danse_trois_vert = null;
-    Mur_Bleu_Gauche_Droit = null;
-    Mur_Bleu_Haut = null;
-    Mur_Bleu_Droite_Droit = null;
-    Mur_Porte_Haut = null;
-    Mur_Porte_Bas = null;
-    Mur_Bleu_Bas = null;
-    Mur_Violet_Bas = null;
-    Mur_Cache_Bas = null;
-    Tapis = null;
-    Tapis_deux = null;
-    Statue = null;
-    Boite_dialogue = null;
-    Plante = null;
-    Bureau = null;
-    BureauCollision = null;
-    Cafe = null;
-    CafeCollision = null;
-    Cafe_deux = null;
-    CafeCollision_deux = null;
-    Cafe_trois = null;
-    CafeCollision_trois = null;
-    TableRonde = null;
-    TableRonde_deux = null;
-    TableRonde_trois = null;
-    TableRonde_quatre = null;
-    Bureau_chaise = null;
-    Bureau_chaise_deux = null;
-    Bureau_chaise_trois = null;
-    Bureau_Droite = null;
-    Bureau_Droite_collision = null;
-    Bureau_Droite_deux = null;
-    Bureau_Droite_deux_collision = null;
-    Bureau_Droite_trois = null;
-    Bureau_Droite_trois_collision = null;
-    Porte_Fermee = null;
-    porte_ouverte_1 = null;
-    porte_ouverte_2 = null;
-    Porte_Overlap = null;
-    Porte_Overlap_droite = null;
-    porte_kill = false;
-    Nope = null;
-    greek_talking = null;
-    Good = null;
-    Clé = null;
-    countObject = 0;
-    cursors = null;
-    text = null;
-    overlap = false;
-    chance = 3;
-    spaceIsDown = false;
-    enterIsDown = true;
-    total = 0;
-    opened_door = 0;
-    last_tooltip = 0;
-    kill_tooltip = 0;   
-    pnjsList = [];
-    interface = null;
-    musique_background = null;
+
 }
 
 playState.prototype = {
@@ -70,7 +7,6 @@ playState.prototype = {
         //BACKGROUND
         game.add.tileSprite(0, 0, 1434, 734, 'background');
         game.world.setBounds(0, 0, 1434, 734);
-
         
         //OBJET VISUEL DANS LA MAP
         Tapis = game.add.sprite(680,250, 'tapis');
@@ -159,8 +95,6 @@ playState.prototype = {
         
         
         //SCALE OBJET
-       /* Tapis.scale.setTo(0.5, 0.5);
-       Tapis_deux.scale.setTo(0.5, 0.5);*/
        Boite_dialogue.scale.setTo(0.5, 0.5);
 
         //ENABLE LA PHYSIQUE POUR NOS OBJETS
@@ -251,6 +185,8 @@ playState.prototype = {
 
     update: function(){
         
+        console.log(localStorage.i);
+
         //TIME LOSE
         if(this.timeElapsed >= this.totalTime){
             game.state.start('gameover_tuto');
@@ -271,26 +207,6 @@ playState.prototype = {
             game.physics.arcade.collide(joueur,Porte_Fermee);
         }
 
-
-        //NOMBRE DE PERSONNE AU DEPLACEMENT RANDOM
-        /*if (total < 2){
-        /*if (total < 2){
-            this.releasepnj();
-        }*/
-        
-        //PERTE DE CHANCE SUR LES PERSONNAGES NON JOUABLE
-        /*for(var i = 0; i < pnjsList.length; i++){
-            if(this.checkOverlap(joueur, pnjsList[i]) && action.isDown === true && spaceIsDown ===  false && chance >= 1 && countObject === 1 && overlap === false){
-                chance--;
-                text.text = chance;
-                spaceIsDown = true;
-            }else if(action.isDown === false){
-                spaceIsDown = false;
-            }
-            if(chance === 0){
-                game.state.start('gameover_tuto');
-            };
-        }*/
         // GERER LES COLLISIONS DES PERSONNAGES NON JOUABLES
         pnjsList.forEach(function(pnj) {
             game.physics.arcade.collide(pnj, [Mur_Bleu_Gauche_Droit, Mur_Bleu_Haut,Mur_Bleu_Bas,Mur_Bleu_Droite_Droit,Mur_Porte_Haut,Mur_Porte_Bas,Mur_Violet_Bas,Statue,CafeCollision,CafeCollision_deux,CafeCollision_trois,BureauCollision,Bureau_chaise,Bureau_chaise_deux,Bureau_chaise_trois,Bureau_Droite_collision,Bureau_Droite_deux_collision,Bureau_Droite_trois_collision, Porte_Fermee]);
@@ -525,6 +441,7 @@ playState.prototype = {
 
     //CHANGE TO WIN SCREEN
     winScreen: function(){
+        localStorage.i = 1;
         game.state.start('wintuto');
     }
 }

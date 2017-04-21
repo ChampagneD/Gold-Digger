@@ -1,41 +1,5 @@
 var level1State = function() {
 
-    console.log('reinitialisation');
-    joueur = null;
-    eclairage = null;
-    first_door_level1 = null;
-    first_door_top_level1 = null;
-    top_mur_level1 = null;
-    second_door_top = null;
-    second_door_bot = null;
-    wall_droite = null;
-    bottom_wall = null;
-    bottom_wall_top = null;
-    bottom_wall_all = null;
-    collide_object = null;
-    dj = null;
-    dj_anim = null;
-    top_object = null;
-    lumiere_gauche = null;
-    lumiere_droite = null;
-    musique_background = null;
-    spaceIsDown = false;
-    Danse_un = null;
-    Danse_un_vert = null;
-    Danse_trois_vert = null;
-    Danse_deux = null;
-    Danse_deux_2 = null;
-    Danse_deux_vert = null;
-    Danse_deux_vert_deux = null;
-    afficher_pourcentage = null;
-    text = null;
-    pourcentage = 100;
-    vie = 3;
-    affiche_pourcentage_cent = null;
-    Boite_dialogue = null;
-    interface = null;
-    Good = null;
-    tooltip_count = 0;
 }
 
 
@@ -165,8 +129,9 @@ level1State.prototype = {
         //musique
         musique_background = game.add.audio('musique_background');
         musique_background.play();
-    }
-,    update: function(){
+    },    
+
+    update: function(){
         //ANIMATION
         Danse_un.animations.play('danse_un');
         Danse_un_vert.animations.play('danse_un_vert');
@@ -286,12 +251,10 @@ level1State.prototype = {
         if (vie == 0) {
             game.state.start('gameover_level1');
         }
-        console.log(vie);
     },
 
     changeVolume: function(){
          musique_background.volume -= 0.05;
-        console.log(musique_background.volume.toFixed(2));
     },
 
     createTimer: function(){
@@ -389,6 +352,7 @@ level1State.prototype = {
     },
     //CHANGE TO WIN SCREEN
     winScreen: function(){
+        localStorage.i = 2;
         game.state.start('winLevel1');
     }
 }

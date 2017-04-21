@@ -1,25 +1,5 @@
 var level2State = function() {
-    joueur = null;
-    grillage_droite = null;
-    grillage_gauche = null;
-    batiment = null;
-    first_door_top_level2 = null;
-    first_door_level2 = null;
-    bottom_wall_level2 = null;
-    bottom_wall_level2_collision = null;
-    bottom_wall_level2_nocollision = null;
-    top_mur_level2 = null;
-    mur_droite_level2 = null;
-    top_object = null;
-    lumiere_level2 = null;
-    bouton = null;
-    affiche_pourcentage_cent = null;
-    bouton_press = false;
-    Boite_dialogue = null;
-    greek_talking = null;
-    background = null;
-    musique_background = null;
-    vie = 3;
+    
 }
 
 level2State.prototype = {
@@ -335,7 +315,8 @@ level2State.prototype = {
             joueur.body.velocity.y = 175;
         }
     },
-        winScreen: function(){
+
+    winScreen: function(){
         game.state.start('winLevel2');
     }
 

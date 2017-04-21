@@ -12,8 +12,7 @@ tutoLoseState.prototype = {
     },
     update: function(){
         if(relancer.isDown){
-            playState();
-            game.state.start('play');
+            game.state.start('boot');
         }
     }
 }

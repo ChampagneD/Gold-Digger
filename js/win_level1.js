@@ -12,7 +12,7 @@ winLevel1State.prototype = {
     },
     update: function(){
         if(raffraichir.isDown){
-            game.state.start('level2');
+            game.state.start('boot', true, true);
         }
     }
 }
